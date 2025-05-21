@@ -83,11 +83,11 @@ void _hs_server_init_events(http_server_t *serv, hs_evt_cb_t timer_cb) {
   serv->loop = epoll_create1(0);
   serv->timer_handler = timer_cb;
 
-  int tfd = timerfd_create(CLOCK_MONOTONIC, 0);
+  int tfd = timer_create(CLOCK_MONOTONIC, 0);
   struct itimerspec ts = {};
   ts.it_value.tv_sec = 1;
   ts.it_interval.tv_sec = 1;
-  timerfd_settime(tfd, 0, &ts, NULL);
+  timer_settime(tfd, 0, &ts, NULL);
 
   struct epoll_event ev;
   ev.events = EPOLLIN | EPOLLET;

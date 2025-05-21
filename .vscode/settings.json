@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.asm": "platformio-debug.asm",
+        "timerfd.h": "c"
+    }
+}

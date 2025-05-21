@@ -523,7 +523,7 @@ int main() {
 #include <sys/epoll.h>
 #endif
 
-#ifdef EPOLL
+#ifndef EPOLL
 typedef void (*epoll_cb_t)(struct epoll_event *);
 #endif
 
@@ -629,7 +629,7 @@ typedef struct http_server_s {
 #include <stdlib.h>
 
 #ifndef HTTPSERVER_IMPL
-#include "common.h"
+#include "src/common.h"
 #endif
 
 static inline void _hs_buffer_free(struct hsh_buffer_s *buffer,
@@ -647,7 +647,7 @@ static inline void _hs_buffer_free(struct hsh_buffer_s *buffer,
 #ifndef HS_REQUEST_UTIL_H
 #define HS_REQUEST_UTIL_H
 
-#include "common.h"
+#include "src/common.h"
 
 // http version indicators
 #define HTTP_1_0 0
@@ -2290,7 +2290,7 @@ void hs_request_respond_error(http_request_t *request, int code,
 #include <sys/epoll.h>
 #include <sys/timerfd.h>
 #else
-#include <sys/event.h>
+#include "event.h"
 #endif
 
 #ifndef HTTPSERVER_IMPL
